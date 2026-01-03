@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "308379812188",
+    "project_id": "nhatky-58e5b",
+    "storage_bucket": "nhatky-58e5b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308379812188:android:0f19fdb44b793fa60e0199",
+        "android_client_info": {
+          "package_name": "giakhang65131433.nhatky"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF6Plc88rXsF5k2Ihjrc5epsOY_mhSTAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
