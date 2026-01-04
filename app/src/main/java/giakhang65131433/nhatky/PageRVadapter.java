@@ -4,10 +4,9 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.content.Intent;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,24 +20,17 @@ public class PageRVadapter extends RecyclerView.Adapter {
         this.dataSource = dataSource;
     }
 
-    public class PageItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class PageItemViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         TextView tvDate;
+        Button btnViet;
         public int postion;
 
         public PageItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
             tvTitle= itemView.findViewById(R.id.tieude);
             tvDate = itemView.findViewById(R.id.ngaygio);
-        }
-
-        @Override
-        public void onClick(View v) {
-            int vtCLicked = getAdapterPosition();
-            Pages pageClicked=dataSource.get(vtCLicked);
-            Toast.makeText(v.getContext(),"Ban vua chon" + pageClicked.getTittle(), Toast.LENGTH_SHORT).show();
-
+            btnViet = itemView.findViewById(R.id.btnViet);
         }
     }
 
@@ -55,11 +47,19 @@ public class PageRVadapter extends RecyclerView.Adapter {
         PageItemViewHolder viewHolder =(PageItemViewHolder) holder;
         viewHolder.postion = position;
         Pages page =dataSource.get(position);
-        ((PageItemViewHolder) holder).tvTitle.setText(page.getTittle());
-        ((PageItemViewHolder) holder).tvDate.setText(page.getDate());
+        viewHolder.tvTitle.setText(page.getTittle());
+        viewHolder.tvDate.setText(page.getDate());
 
-
-
+        viewHolder.btnViet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), EditPageActivity.class);
+                intent.putExtra("pageKey", page.getKey());
+                intent.putExtra("pageTitle", page.getTittle());
+                intent.putExtra("pageContent", page.getContent() != null ? page.getContent() : "");
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
