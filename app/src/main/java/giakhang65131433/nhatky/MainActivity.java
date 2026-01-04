@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot obj : snapshot.getChildren()) {
                     Pages page = obj.getValue(Pages.class);
                     if (page != null) {
+                        page.setKey(obj.getKey());
                         lstpage.add(page);
                     }
                 }
