@@ -1,6 +1,7 @@
 package giakhang65131433.nhatky;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Pages");
 
+
         lstpage = new ArrayList<>();
+        DatabaseReference.addValueEventListener(listendb);
         RecyclerView recyclerView = findViewById(R.id.rcvPage);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -39,25 +42,28 @@ public class MainActivity extends AppCompatActivity {
         );
         adapter = new PageRVadapter(lstpage);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
-        ValueEventListener listendb = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                lstpage.clear();
-                for (DataSnapshot obj : snapshot.getChildren()) {
-                    Pages page = obj.getValue(Pages.class);
-                    if (page != null) {
-                        lstpage.add(page);
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        myRef.addValueEventListener(listendb);
+        myRef.setValue("Hello, NguyenQuocGiaKhang!");
     }
+    ValueEventListener listendb= myRef.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            for (DataSnapshot obj : snapshot.getChildren()) {
+                Pages page = obj.getValue(Pages.class);
+                if (page != null) {
+                    lstpage.add(page);
+                    //Log.w("Nhat Ky app", "Tên page: " + page.getTittle());
+                }
+            }
+            adapter.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
 }
