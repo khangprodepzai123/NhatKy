@@ -14,9 +14,6 @@ import java.util.List;
 
 public class PageRVadapter extends RecyclerView.Adapter {
     List<Pages> dataSource;
-    PageRVadapter adapter;
-
-
 
     public PageRVadapter(List<Pages> dataSource) {
         this.dataSource = dataSource;
