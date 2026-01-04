@@ -1,5 +1,6 @@
 package giakhang65131433.nhatky;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,13 @@ public class PageRVadapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        PageItemViewHolder viewHolder =(PageItemViewHolder) holder;
+        viewHolder.postion = position;
+        Pages page =dataSource.get(position);
+        ((PageItemViewHolder) holder).tvTitle.setText(page.getTittle());
+        ((PageItemViewHolder) holder).tvDate.setText(page.getDate());
+
 
 
     }
