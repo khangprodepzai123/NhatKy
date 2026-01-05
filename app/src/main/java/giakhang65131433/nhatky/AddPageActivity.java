@@ -13,7 +13,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
 
 public class AddPageActivity extends AppCompatActivity {
 
@@ -44,10 +43,7 @@ public class AddPageActivity extends AppCompatActivity {
 
                 String key = databaseReference.push().getKey();
 
-                HashMap<String, Object> item = new HashMap<>();
-                item.put(key, page.toFirebase());
-
-                databaseReference.updateChildren(item, new DatabaseReference.CompletionListener() {
+                databaseReference.child(key).setValue(page.toFirebase(), new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error,
                                            @NonNull DatabaseReference ref) {

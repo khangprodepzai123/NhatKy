@@ -70,25 +70,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextDate" />
 
-    <!-- Save button -->
     <EditText
         android:id="@+id/editTextContent"
-        android:layout_width="320dp"
-        android:layout_height="217dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="top|start"
         android:hint="Nội dung"
+        android:inputType="textMultiLine"
+        android:minLines="10"
+        app:layout_constraintBottom_toTopOf="@id/floatingActionButton2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/textView5"
-        app:layout_constraintTop_toTopOf="@id/textView5" />
+        app:layout_constraintTop_toBottomOf="@id/textView5" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_save"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:srcCompat="@android:drawable/ic_menu_save" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

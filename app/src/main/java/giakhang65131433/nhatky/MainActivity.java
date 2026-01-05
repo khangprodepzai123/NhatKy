@@ -1,6 +1,8 @@
 package giakhang65131433.nhatky;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         );
         adapter = new PageRVadapter(lstpage);
         recyclerView.setAdapter(adapter);
+
+        FloatingActionButton btnAdd = findViewById(R.id.floatingActionButton);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddPageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ValueEventListener listendb = new ValueEventListener() {
             @Override
