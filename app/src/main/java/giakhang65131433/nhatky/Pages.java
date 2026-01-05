@@ -8,11 +8,11 @@ public class Pages {
    String content;
    String key;
 
-    public Pages(String tittle, String date, String content, String key) {
+    public Pages(String tittle, String date, String content) {
         this.tittle = tittle;
         this.date = date;
         this.content = content;
-        this.key = key;
+
     }
 
     public Pages(){

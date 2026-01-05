@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView2" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextTittle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -46,11 +46,11 @@
         android:layout_marginTop="16dp"
         android:text="Date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@id/editTextTittle" />
 
     <!-- Label 3 -->
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editTextDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -68,11 +68,11 @@
         android:layout_marginTop="16dp"
         android:text="Content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@id/editTextDate" />
 
     <!-- Save button -->
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/editTextContent"
         android:layout_width="320dp"
         android:layout_height="217dp"
         android:layout_marginStart="16dp"
